@@ -59,7 +59,7 @@ main{
     border-radius: 15px;
     margin-top: 15px;
     transition: .1s ease-in-out;
-     touch-action: manipulation; /* très important sur mobile */
+     
 }
 
 .liste div:active{

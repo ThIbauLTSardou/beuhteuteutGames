@@ -1,6 +1,6 @@
 export function initJeuQuestions() {
     const container = document.getElementById("question");
-    const tozElement = document.getElementById('toz');
+    const tozElement = document.getElementById("toz");
     const joueurs = document.querySelectorAll(".joueur");
 
     if (!container || !tozElement || joueurs.length === 0) {
@@ -12,77 +12,70 @@ export function initJeuQuestions() {
     let compteurQuestions = 0;
     const LIMITE = 40;
 
-    fetch('../assets/questions.json')
-        .then(res => res.json())
-        .then(data => {
+    fetch("./assets/questions.json")
+        .then((res) => {
+            if (!res.ok) throw new Error("Échec du chargement du JSON");
+            return res.json();
+        })
+        .then((data) => {
+            if (!Array.isArray(data.questions)) throw new Error("Format de données invalide");
             questionsRestantes = [...data.questions];
 
-            let valeur = Math.floor(Math.random() * 10) + 1;
-            tozElement.innerHTML = `${valeur} toz`;
+            afficherNouvelleQuestion();
 
-            // Affiche une première question
-            if (questionsRestantes.length > 0) {
-                const index = Math.floor(Math.random() * questionsRestantes.length);
-                container.textContent = questionsRestantes[index];
-                questionsRestantes.splice(index, 1);
-            }
+            joueurs.forEach((joueur) => {
+                const handleClick = (event) => {
+                    event.preventDefault();
 
-            joueurs.forEach(joueur => {
-                const eventHandler = () => {
                     if (compteurQuestions >= LIMITE || questionsRestantes.length === 0) {
                         container.textContent = "Fin du jeu.";
                         disableTousLesJoueurs(joueurs);
                         return;
                     }
 
-                    const index = Math.floor(Math.random() * questionsRestantes.length);
-                    const question = questionsRestantes[index];
+                    const question = tirerQuestionAleatoire();
+                    const toz = tirerValeurToz();
 
-                    ajouterScore(joueur.id, valeur, question);
+                    ajouterScore(joueur.id, toz, question);
+
                     container.textContent = question;
-                    questionsRestantes.splice(index, 1);
+                    tozElement.innerHTML = `${toz} toz`;
                     compteurQuestions++;
-
-                    valeur = Math.floor(Math.random() * 10) + 1;
-                    tozElement.innerHTML = `${valeur} toz`;
                 };
 
-                // Ajoute à la fois click et touchstart pour couvrir mobile
-                joueur.addEventListener("click", eventHandler);
-                joueur.addEventListener("touchstart", eventHandler);
+                joueur.addEventListener("click", handleClick);
+                joueur.addEventListener("touchstart", handleClick, { passive: false });
             });
         })
-        .catch(err => {
+        .catch((err) => {
             console.error("Erreur de chargement des questions :", err);
             container.textContent = "Erreur de chargement.";
         });
 
-    function disableTousLesJoueurs(joueurElements) {
-        joueurElements.forEach(j => j.style.pointerEvents = "none");
+    function tirerValeurToz() {
+        return Math.floor(Math.random() * 10) + 1;
     }
-}
 
-
-
-function ajouterScore(joueur, toz, question) {
-
-    let joueursSave = JSON.parse(localStorage.getItem("joueursSauvegardés"));
-    if (question === "Tout le monde bois") {
-
+    function tirerQuestionAleatoire() {
+        const index = Math.floor(Math.random() * questionsRestantes.length);
+        const question = questionsRestantes[index];
+        questionsRestantes.splice(index, 1);
+        return question;
     }
-    else {
-        for (let i = 0; i < joueursSave.length; i++) {
-            if (joueur == joueursSave[i].name) {
-                joueursSave[i].score += toz
 
-                break
-            }
+    function afficherNouvelleQuestion() {
+        if (questionsRestantes.length > 0) {
+            const question = tirerQuestionAleatoire();
+            const toz = tirerValeurToz();
+            container.textContent = question;
+            tozElement.innerHTML = `${toz} toz`;
         }
     }
 
-
-    localStorage.setItem("joueursSauvegardés", JSON.stringify(joueursSave));
-
-    sessionStorage.setItem("joueursSauvegardés", JSON.stringify(joueursSave));
-
+    function disableTousLesJoueurs(elements) {
+        elements.forEach((el) => {
+            el.style.pointerEvents = "none";
+            el.classList.add("disabled");
+        });
+    }
 }

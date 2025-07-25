@@ -11,11 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     let container = afficherjoueurQuiDeNous(joueurs)
-document.getElementById('liste').innerHTML = container
+    document.getElementById('liste').innerHTML = container
 
-// Appelle initJeuQuestions APRÈS que les joueurs soient dans le DOM
-setTimeout(() => {
-    initJeuQuestions();
-}, 0);
+    
+    initJeuQuestions()
 
 });

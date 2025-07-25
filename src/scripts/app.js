@@ -21,23 +21,25 @@ let selection = [];
 
 document.addEventListener('DOMContentLoaded', () => {
 
-/** 
-    let joueursSave = JSON.parse(sessionStorage.getItem("joueursSauvegardés")) 
-|| JSON.parse(localStorage.getItem("joueursSauvegardés"));
-data = joueursSave
-let listJoueur = afficherjoueur(joueursSave);
-document.getElementById('main').innerHTML = listJoueur;  */
+let joueursSave = [];
 
-if (!localStorage.getItem("joueursSauvegardés")) {
-        localStorage.setItem("joueursSauvegardés", JSON.stringify(data.joueurs));
-    }
+try {
+    joueursSave = JSON.parse(sessionStorage.getItem("joueursSauvegardés")) 
+               || JSON.parse(localStorage.getItem("joueursSauvegardés")) 
+               || data.joueurs;
+} catch (e) {
+    console.warn("Erreur de parsing JSON :", e);
+    joueursSave = data.joueurs; // fallback par défaut
+}
 
-    let joueursSave = JSON.parse(sessionStorage.getItem("joueursSauvegardés")) 
-                   || JSON.parse(localStorage.getItem("joueursSauvegardés")) 
-                   || data.joueurs;
+// Sécurité : si joueursSave est nul ou pas un tableau, on réinitialise
+if (!Array.isArray(joueursSave)) {
+    joueursSave = data.joueurs;
+    localStorage.setItem("joueursSauvegardés", JSON.stringify(data.joueurs));
+}
 
-    let listJoueur = afficherjoueur(joueursSave);
-    document.getElementById('main').innerHTML = listJoueur;
+   let listJoueur = afficherjoueur(joueursSave);
+document.getElementById('main').innerHTML = listJoueur;
 
 
 

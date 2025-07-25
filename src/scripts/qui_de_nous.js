@@ -1,19 +1,17 @@
 import { afficherjoueurQuiDeNous } from './insertionHTML.js';
 import { initJeuQuestions } from './api.js';
 
-
 document.addEventListener('DOMContentLoaded', () => {
-
-    
-    
     const joueurs = JSON.parse(sessionStorage.getItem("selection")) || [];
-    console.log(joueurs);
 
+    const listeDiv = document.getElementById('liste');
+    if (!listeDiv) return console.error("Élément #liste introuvable");
 
-    let container = afficherjoueurQuiDeNous(joueurs)
-    document.getElementById('liste').innerHTML = container
+    const container = afficherjoueurQuiDeNous(joueurs);
+    listeDiv.innerHTML = container;
 
-    
-    initJeuQuestions()
-
+    // Important : attendre que le DOM soit mis à jour
+    setTimeout(() => {
+        initJeuQuestions(); // On appelle après insertion du HTML
+    }, 50);
 });

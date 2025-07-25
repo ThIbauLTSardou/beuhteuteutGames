@@ -12,7 +12,7 @@ export function initJeuQuestions() {
     let compteurQuestions = 0;
     const LIMITE = 40;
 
-    fetch('./assets/questions.json')
+    fetch('qui-de-nous/src/assets/questions.json')
         .then(res => res.json())
         .then(data => {
             questionsRestantes = [...data.questions];

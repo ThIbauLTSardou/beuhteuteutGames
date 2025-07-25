@@ -26,7 +26,7 @@ export function initJeuQuestions() {
             }
 
             joueurs.forEach(joueur => {
-                joueur.addEventListener("click", () => {
+                joueur.addEventListener("touchstart", () => {
 
 
 

@@ -48,7 +48,7 @@ document.getElementById('main').innerHTML = listJoueur;
     let deuxieme = 0
     let troiseme = 0
 
-    let joueursCopies = [...data];
+    let joueursCopies = [...data.joueurs];
 
     
     joueursCopies.sort(function (a, b) {

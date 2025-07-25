@@ -21,12 +21,23 @@ let selection = [];
 
 document.addEventListener('DOMContentLoaded', () => {
 
-
+/** 
     let joueursSave = JSON.parse(sessionStorage.getItem("joueursSauvegardés")) 
 || JSON.parse(localStorage.getItem("joueursSauvegardés"));
 data = joueursSave
 let listJoueur = afficherjoueur(joueursSave);
-document.getElementById('main').innerHTML = listJoueur;
+document.getElementById('main').innerHTML = listJoueur;  */
+
+if (!localStorage.getItem("joueursSauvegardés")) {
+        localStorage.setItem("joueursSauvegardés", JSON.stringify(data.joueurs));
+    }
+
+    let joueursSave = JSON.parse(sessionStorage.getItem("joueursSauvegardés")) 
+                   || JSON.parse(localStorage.getItem("joueursSauvegardés")) 
+                   || data.joueurs;
+
+    let listJoueur = afficherjoueur(joueursSave);
+    document.getElementById('main').innerHTML = listJoueur;
 
 
 

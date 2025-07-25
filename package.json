@@ -1,0 +1,17 @@
+{
+  "name": "qui-de-nous",
+  "version": "1.0.0",
+  "description": "Un jeu interactif pour découvrir qui parmi les joueurs correspond le mieux à chaque question.",
+  "main": "src/scripts/app.js",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'Build step not defined'",
+    "test": "echo 'No tests defined'"
+  },
+  "author": "Thibault Sardou",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}

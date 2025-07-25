@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+body {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+:root{
+    --rose : #FF7BAD
+}
+header{
+    width: 100%;
+    text-align: center;
+}
+header h1{
+    margin-top: 30px;
+    font-size: 2.5vh;
+}
+
+/****  podium  **/
+
+.podium{
+    margin-top: 5vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.tete{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 8vh;
+    width: 8vh;
+    overflow: hidden;
+    border-radius: 100%;
+    border: gray 3px solid;
+    
+}
+.tete img{
+    height: 8vh;
+    width: 8vh;
+}
+#first{
+    height: 12vh;
+    width: 12vh;
+    border: #FF7BAD 3px solid;
+}
+
+#first img{
+    height: 12vh;
+    width: 12vh;
+}
+
+.podium-score p{
+    font-size: 1.3vh;
+    background-color: #FF7BAD;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.podium div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/*** main ***/
+
+main{
+    margin-top: 3vh;
+    margin-bottom: 5vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+main .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    height: 8vh;
+    font-size: 2vh;
+    font-weight: bold;
+    border: #e2e2e2 2px solid;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+main .container img{
+    height: 5vh;
+    width: 5vh;
+    border-radius: 100%;
+    margin-left: 6vw;
+    
+}
+
+main .container .score{
+    background-color: #FF7BAD;
+    padding: 4px 10px;
+    border-radius:  40%;
+    color: white;
+    font-size: 1.5vh;
+    margin-left: 6vw;
+}
+
+.container div{
+    display: flex;
+    align-items: center;
+    
+}
+
+main .container div .name{
+    margin-left: 6vw;
+    font-size: 1.8vh;
+}
+
+
+.plus{
+    margin-right: 2vh;
+    color: #4bc518;
+    border: #4bc518 2px solid;
+    border-radius: 5px;
+    background-color: transparent;
+    transition: .1s;
+
+}
+
+.plus:active{
+    transform: scale(0.9);
+}
+
+.plus:hover{
+    cursor: pointer;
+   
+}
+
+
+
+
+footer{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5vh;
+}
+
+ footer button{
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    padding: 1.5vh 15vw;
+    border-radius: 50px;
+    background-color: var(--rose);
+    color: white;
+    border: transparent;
+    font-size: 1.7vh;
+    cursor: pointer;
+    transition: .1s ease-in;
+}
+
+footer button:active{
+    transform: scale(0.9);
+}
+
+footer button:hover{
+    transform: scale(0.9);
+}

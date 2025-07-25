@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+body {
+     margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    background-color: white;
+}
+:root{
+    --rose : #FF7BAD
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.question{
+    margin-top: 10vh;
+    background-color: #F8BB3B;
+    color: white;
+    width: 80vw;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.question div{
+    width: max-content;
+
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+.question div p{
+    margin: 0;
+}
+
+.question h2{
+    font-size: 2.2vh;
+}
+
+
+
+
+
+
+
+.liste{
+    margin-top: 5vh;
+}
+
+.liste div{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 80vw;
+    cursor: pointer;
+    border: #F8BB3B 2px solid;
+    border-radius: 15px;
+    margin-top: 15px;
+    transition: .1s ease-in-out;
+}
+
+.liste div:active{
+    transform: scale(0.95);
+}
+
+.liste img{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    margin-left: 4vw;
+}
+
+.liste p{
+     margin-left: 4vw;
+     font-weight: bold;
+     font-size: 2vh;
+}
+
+
+
+
+
+
+footer{
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.tayo{
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    padding: 1.2vh 10vw;
+    border-radius: 50px;
+    background-color: #F8BB3B;
+    color: white;
+    border: transparent;
+    font-size: 1.7vh;
+    cursor: pointer;
+    transition: .1s ease-in;
+}
+
+.tayo:active{
+    transform: scale(0.9);
+}
+
+.tayo:hover{
+    transform: scale(0.9);
+}

@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+body {
+     margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    background-color: white;
+}
+:root{
+    --rose : #FF7BAD
+}
+
+
+header{
+    padding-top: 5vh;
+    width: 100vw;
+    
+}
+
+header h1{
+    color: var(--rose);
+    font-size: 3vh;
+    margin-left: 3vw;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+header h2{
+    color: rgb(160, 160, 160);
+    font-size: 2vh;
+    margin-left: 3vw;
+    margin-top: 1vh;
+    margin-bottom: 0;
+}
+
+main{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.Qui_de_nous{
+    background: linear-gradient(to right, #EE6E9F, #EB8B6B);
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    border-radius: 20px;
+    width: 85vw;
+    height: 15vh;
+    color: white;
+    padding-left: 20px;
+    cursor: pointer;
+    transition: .1s ease-in-out;
+
+}
+.Qui_de_nous:active{
+    transform: scale(0.95);
+}
+.Qui_de_nous img{
+    position: absolute;
+    right: 3px;
+}
